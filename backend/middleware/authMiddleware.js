@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 
 const authMiddleware = (req, res, next) => {
-  try {
+ 
     const authHeader = req.headers.authorization;
     console.log("Received Authorization Header:", authHeader);
 
@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
 
     const token = authHeader.split(" ")[1];
     console.log("Extracted Token:", token);
-
+     try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
